@@ -1,4 +1,4 @@
-package com.dockerbt.dockerbp.robin;
+package com.dockerbt.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
