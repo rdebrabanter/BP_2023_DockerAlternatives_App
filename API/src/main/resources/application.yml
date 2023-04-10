@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: dockerbt-api
+  data:
+    rest:
+      detection-strategy: annotated
+
+server:
+  port : 9999
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      base-path: /api/dockerbt/actuator
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: '/api/dockerbt/api-docs'
+  swagger-ui:
+    path: 'api/dockerbt/swagger'
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+logging:
+  level:
+    com.dockerbt.api: INFO
