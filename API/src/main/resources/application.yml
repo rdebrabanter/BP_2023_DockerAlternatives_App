@@ -7,9 +7,7 @@ spring:
 
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://host.docker.internal:2000;databaseName=dockerbt;encrypt=true;trustServerCertificate=true;
-    username: sa
-    password: Password123
+    url: jdbc:sqlserver://localhost;encrypt=true;trustServerCertificate=true;integratedSecurity=true;createDatabaseIfNotExist=true;
   jpa:
     database: sql_server
     show-sql: true

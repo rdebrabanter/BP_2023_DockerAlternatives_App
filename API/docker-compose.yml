@@ -4,15 +4,5 @@ services:
     build: .
     ports:
       - 8080:8080
-    depends_on:
-      - db
     environment:
-      spring.datasource.url: jdbc:sqlserver://mssqlserver:1433;databaseName=tool;encrypt=true;trustServerCertificate=true;
-  db:
-    container_name: mssqlserver
-    image: mcr.microsoft.com/mssql/server
-    ports:
-      - "1433:1433"
-    environment:
-      MSSQL_SA_PASSWORD : "Password123"
-      ACCEPT_EULA: "Y"
+      spring.datasource.url: jdbc:sqlserver://localhost;encrypt=false;trustServerCertificate=true;integratedSecurity=true;createDatabaseIfNotExist=true;
