@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @OpenAPIDefinition(info = @Info(title = "Tools API", version = "1.0", description = "Rest API for Tools."))
 @SpringBootApplication(scanBasePackages = { "com.dockerbt" })
-public class Application {
-
+public class ToolApplication
+{
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(ToolApplication.class, args);
 	}
 }

@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class ToolServiceImpl implements ToolService
 {
-    private final ToolRepository toolRepository;
+    private ToolRepository toolRepository;
 
 //    private final ToolMapper toolMapper;
 
