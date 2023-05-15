@@ -4,5 +4,3 @@ services:
     build: .
     ports:
       - 8080:8080
-    environment:
-      spring.datasource.url: jdbc:sqlserver://localhost;encrypt=false;trustServerCertificate=true;integratedSecurity=true;createDatabaseIfNotExist=true;
