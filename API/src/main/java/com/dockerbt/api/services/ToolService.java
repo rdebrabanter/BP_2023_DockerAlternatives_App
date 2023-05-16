@@ -6,5 +6,8 @@ import java.util.Optional;
 
 @Service
 public interface ToolService {
-    Optional<ToolDto> getToolById(Long toolId);
+    ToolDto getToolById(Long toolId);
+    ToolDto addTool(ToolDto toolDto);
+    ToolDto updateTool(ToolDto toolDto, Long id);
+    void deleteTool(Long id);
 }
