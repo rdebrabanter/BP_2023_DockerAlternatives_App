@@ -19,7 +19,7 @@ springdoc:
     enabled: true
     path: '/api/dockerbt/api-docs'
   swagger-ui:
-    path: 'api/dockerbt/swagger'
+    path: '/api/dockerbt/swagger'
     tags-sorter: alpha
     operations-sorter: alpha
 
