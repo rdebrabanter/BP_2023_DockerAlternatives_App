@@ -29,18 +29,6 @@ public class ToolController
 {
     private final ToolService toolService;
 
-    @Operation(tags = {"Example"}, summary = "Get a string-message", responses = {
-            @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_OK, description = "Success"),
-            @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_BAD_REQUEST, description = "Bad request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiError.class))),
-            @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_INTERNAL_SERVER_ERROR, description = "Something went wrong on the server!", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiError.class))),
-            @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_NOT_FOUND, description = "No matching record found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiError.class)))
-    })
-    @RequestMapping(value = "/message", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getMessage()
-    {
-        return "Message from ToolController";
-    }
-
     @Operation(tags = {"Tools"}, summary = "Get tool by id", responses = {
             @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_OK, description = "Success"),
             @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_BAD_REQUEST, description = "Bad request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiError.class))),
