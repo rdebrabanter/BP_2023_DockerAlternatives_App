@@ -34,14 +34,14 @@ public class ToolRepository
         return null;
     }
 
-    Tool addTool(Tool tool) {
+    public Tool addTool(Tool tool) {
         Long id = toolList.get(toolList.size() - 1).getId();
         Tool newTool = tool;
         newTool.setId(id + 1);
         toolList.add(newTool);
         return tool;
     }
-    Tool updateTool(Tool tool, Long id) {
+    public Tool updateTool(Tool tool, Long id) {
         Tool updateTool = getToolById(id);
         updateTool.setToolNumber(tool.getToolNumber());
         updateTool.setDepartment(tool.getDepartment());
@@ -49,7 +49,7 @@ public class ToolRepository
         updateTool.setDateInUse(tool.getDateInUse());
         return updateTool;
     }
-    void deleteTool(Long id) {
+    public void deleteTool(Long id) {
         Tool deleteTool = getToolById(id);
         toolList.remove(deleteTool);
     }

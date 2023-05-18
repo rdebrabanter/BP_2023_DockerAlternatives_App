@@ -23,25 +23,23 @@ public class ToolServiceImpl implements ToolService
     @Override
     public ToolDto getToolById(Long toolId)
     {
-        Tool toolOpt = toolRepository.getToolById(toolId);
-
-        return toolMapper.toolToToolDto(toolOpt);
+        return toolMapper.toolToToolDto(toolRepository.getToolById(toolId));
     }
 
     @Override
     public ToolDto addTool(ToolDto toolDto) {
-        return null;
+        Tool tool = toolMapper.toolDtoToTool(toolDto);
+        return toolMapper.toolToToolDto(toolRepository.addTool(tool));
     }
 
     @Override
     public ToolDto updateTool(ToolDto toolDto, Long id) {
-        return null;
+        Tool tool = toolMapper.toolDtoToTool(toolDto);
+        return toolMapper.toolToToolDto(toolRepository.updateTool(tool, id));
     }
 
     @Override
     public void deleteTool(Long id) {
-
+        toolRepository.deleteTool(id);
     }
-
-
 }
