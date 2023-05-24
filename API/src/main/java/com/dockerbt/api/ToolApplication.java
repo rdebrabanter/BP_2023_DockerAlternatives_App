@@ -38,5 +38,6 @@ public class ToolApplication
 		logger.info("GET request");
 		logger.info("Toolnumber: " + toolController.getToolById(1L).getToolNumber());
 		logger.info("--------");
+		System.exit(0);
 	}
 }
