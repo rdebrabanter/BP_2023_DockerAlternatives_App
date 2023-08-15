@@ -49,6 +49,7 @@ public class ToolRepository
         Long id = toolList.get(toolList.size() - 1).getId();
         Tool newTool = tool;
         newTool.setId(id + 1);
+        newTool.setDateInUse(LocalDateTime.now());
         toolList.add(newTool);
         return tool;
     }
