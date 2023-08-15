@@ -16,7 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/api/toolshop/tools")
+@RequestMapping("/api/dockerbt/tools")
 @OpenAPIDefinition(tags ={@Tag(name="Tools", description = "API to manage tools.")})
 @RestController
 @Slf4j
