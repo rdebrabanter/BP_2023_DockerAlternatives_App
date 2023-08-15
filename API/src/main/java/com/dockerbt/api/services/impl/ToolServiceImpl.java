@@ -2,6 +2,7 @@ package com.dockerbt.api.services.impl;
 
 import com.dockerbt.api.domain.Tool;
 import com.dockerbt.api.dtos.ToolDto;
+import com.dockerbt.api.exceptions.BadRequestException;
 import com.dockerbt.api.mappers.ToolMapper;
 import com.dockerbt.api.repositories.ToolRepository;
 import com.dockerbt.api.services.ToolService;
@@ -21,13 +22,16 @@ public class ToolServiceImpl implements ToolService
     private final ToolMapper toolMapper;
 
     @Override
-    public ToolDto getToolById(Long toolId)
+    public Optional<ToolDto> getToolById(Long toolId)
     {
-        return toolMapper.toolToToolDto(toolRepository.getToolById(toolId));
+        return toolRepository.getToolById(toolId).map(toolMapper::toolToToolDto);
     }
 
     @Override
     public ToolDto addTool(ToolDto toolDto) {
+        if (toolRepository.findToolById(toolDto.getId()).isPresent()) {
+            throw new BadRequestException("Tool already exists");
+        }
         Tool tool = toolMapper.toolDtoToTool(toolDto);
         return toolMapper.toolToToolDto(toolRepository.addTool(tool));
     }

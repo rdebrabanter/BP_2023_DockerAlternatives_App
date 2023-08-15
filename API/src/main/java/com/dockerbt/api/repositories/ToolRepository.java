@@ -1,8 +1,7 @@
 package com.dockerbt.api.repositories;
 
 import com.dockerbt.api.domain.Tool;
-import com.dockerbt.api.dtos.ToolDto;
-import org.springframework.http.ResponseEntity;
+import com.dockerbt.api.exceptions.NotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -25,13 +24,25 @@ public class ToolRepository
         this.toolList.add(tool);
     }
 
-    public Tool getToolById(Long toolId) {
-        final Tool output = null;
+    public Optional<Tool> findToolById(Long toolId) {
         for (Tool t: toolList) {
-            if (t.getId() == toolId)
-                return t;
+            if (t.getId() == toolId) {
+                return Optional.of(t);
+            }
         }
-        return null;
+        return Optional.empty();
+    }
+
+    public Optional<Tool> getToolById(Long toolId) {
+        for (Tool t: toolList) {
+            if (t.getId() == toolId) {
+                return Optional.of(t);
+            }
+            else {
+                throw new NotFoundException("Tool not found");
+            }
+        }
+        return Optional.empty();
     }
 
     public Tool addTool(Tool tool) {
@@ -42,7 +53,7 @@ public class ToolRepository
         return tool;
     }
     public Tool updateTool(Tool tool, Long id) {
-        Tool updateTool = getToolById(id);
+        Tool updateTool = findToolById(id).orElseThrow(() -> new NotFoundException("Tool not found"));
         updateTool.setToolNumber(tool.getToolNumber());
         updateTool.setDepartment(tool.getDepartment());
         updateTool.setSerialNumber(tool.getSerialNumber());
@@ -50,7 +61,7 @@ public class ToolRepository
         return updateTool;
     }
     public void deleteTool(Long id) {
-        Tool deleteTool = getToolById(id);
+        Tool deleteTool = findToolById(id).orElseThrow(() -> new NotFoundException("Tool not found"));
         toolList.remove(deleteTool);
     }
 }

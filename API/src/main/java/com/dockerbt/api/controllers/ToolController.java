@@ -16,6 +16,8 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RequestMapping("/api/dockerbt/tools")
 @OpenAPIDefinition(tags ={@Tag(name="Tools", description = "API to manage tools.")})
 @RestController
@@ -32,7 +34,7 @@ public class ToolController
             @ApiResponse(responseCode = ApiResponseConstants.RESPONSE_CODE_INTERNAL_SERVER_ERROR, description = "Something went wrong on the server!", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiError.class))),
     })
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ToolDto getToolById(@PathVariable(name = "id") Long id) {
+    public Optional<ToolDto> getToolById(@PathVariable(name = "id") Long id) {
         return toolService.getToolById(id);
     }
 
