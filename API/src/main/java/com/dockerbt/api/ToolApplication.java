@@ -26,18 +26,5 @@ public class ToolApplication
 {
 	public static void main(String[] args) {
 		SpringApplication.run(ToolApplication.class, args);
-
-	}
-
-	@EventListener(ApplicationReadyEvent.class)
-	public void doSomethingAfterStartup() {
-		Logger logger = LoggerFactory.getLogger(ToolApplication.class);
-		ToolController toolController = new ToolController(new ToolServiceImpl(new ToolRepository(), new ToolMapperImpl()));
-
-		logger.info("--------");
-		logger.info("GET request");
-		logger.info("Toolnumber: " + toolController.getToolById(1L).get().getToolNumber());
-		logger.info("--------");
-		System.exit(0);
 	}
 }
